@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use App\Comment;
+
 
 use Illuminate\Http\Request;
 
@@ -19,6 +21,8 @@ class PostsController extends Controller
 
         return view('posts.index',compact('posts')); //nasa promjenjiva ce se u view zvati post
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -100,5 +104,15 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addComment(Request $request,$id)
+    {
+        Comment::create([
+            'post_id'=>$id,
+            'author'=>$request->author,
+            'text'=>$request->text
+        ]);
+        return redirect()->back();
     }
 }
