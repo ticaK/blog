@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
-
+use App\Http\Requests\CreateCommentRequest;
 
 use Illuminate\Http\Request;
 
@@ -106,7 +106,7 @@ class PostsController extends Controller
         //
     }
 
-    public function addComment(Request $request,$id)
+    public function addComment(CreateCommentRequest $request,$id)
     {
         Comment::create([
             'post_id'=>$id,

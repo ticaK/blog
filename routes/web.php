@@ -30,3 +30,9 @@ Route::get('/', function () {
  Route::resource('posts','PostsController');
  Route::post('posts/{id}/comments','PostsController@addComment')
  ->name('posts.comment');
+
+ Route::get('/register',['as'=>'show-register','uses'=>'RegisterController@create']);
+ Route::post('/register',['as'=>'register','uses'=>'RegisterController@store']);
+
+//imenovali smo rutu ovo sa as
+//drugi nacin bi bio ono sa name
