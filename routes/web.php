@@ -34,5 +34,11 @@ Route::get('/', function () {
  Route::get('/register',['as'=>'show-register','uses'=>'RegisterController@create']);
  Route::post('/register',['as'=>'register','uses'=>'RegisterController@store']);
 
+ Route::get ('/logout','LoginController@logout')->name('logout');
+
+ Route::get('/login','LoginController@create')->name('show-login'); //prikaz fajla
+ Route::post('/login','LoginController@store')->name('login');//loginovanje korisnika
+ 
+
 //imenovali smo rutu ovo sa as
 //drugi nacin bi bio ono sa name

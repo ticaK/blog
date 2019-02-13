@@ -27,8 +27,8 @@ class RegisterController extends Controller
         //alternativono sa Hash:make
         $data = $request->only(['email','name','password']);
         $data['password'] = bcrypt($data['password']);
-        User::create($data);
-        
+        $user = User::create($data);//ovo vraca instancu korisnika
+        auth()->login($user);//korisnik je ulogovan, prije redirekcije
         return redirect('/posts');
         //return redirect(route(posts.index));
         
