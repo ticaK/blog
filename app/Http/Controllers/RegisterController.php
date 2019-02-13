@@ -9,6 +9,7 @@ class RegisterController extends Controller
 {
     public function create(){
         return view('auth.register');
+        
 
     }
 
@@ -23,9 +24,16 @@ class RegisterController extends Controller
 
         ]);
 
-        return User::create($request->only(['email','name','password']));
+        //alternativono sa Hash:make
+        $data = $request->only(['email','name','password']);
+        $data['password'] = bcrypt($data['password']);
+        User::create($data);
+        
+        return redirect('/posts');
+        //return redirect(route(posts.index));
         
         
+
         //ovo iznas smo mogli sa new 
 
     }
