@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth',['only'=>['create','store']]);//umjesto auth moze niz middleware
+    }
     /**
      * Display a listing of the resource.
      *
@@ -51,9 +55,16 @@ class PostsController extends Controller
             $request->validate([
                 'title'=>'required',
                 'body'=>'required'
+               
             ]);
+            $post = Post::create(
+                array_merge(
+                $request->all(),
+                ['user_id'=>auth()->user()->id]
+                )
+            );
+        
 
-        Post::create($request->all());
         return redirect('/posts');
         // return redirect(route('posts.index')); moze i ovako
 

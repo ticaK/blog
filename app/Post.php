@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
    protected $fillable =[
-       'title','body'
+       'title','body','user_id'
    ]; 
 
    public static function published(){
@@ -18,6 +18,9 @@ class Post extends Model
       return  self::where('published',0)->get();
        
        
+    }
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');//ili ('User');
     }
 
     public function comments(){

@@ -19,6 +19,10 @@ All post
                <h2 class="blog-post-title">{{$post->title}}</h2>
                <p class="blog-post-meta">{{$post->created_at}}</p>
            <p>{{$post->body}}</p>
+           @if($post->user) 
+           <!-- provjeravamo da li korisnik postoji -->
+           <p>Created by {{$post->user->name}}</p>
+           @endif
            </div><!-- /.blog-post -->
            @endforeach
 
