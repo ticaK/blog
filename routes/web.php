@@ -54,3 +54,11 @@ Route::get('/', function () {
 //u ovoj niz pored guest moze vise midl
 //imenovali smo rutu ovo sa as
 //drugi nacin bi bio ono sa name
+
+
+//ovo je za izlistavanje svih postova od datog korisnika, kada odemo na /my-posts
+Route::group(['middleware'=>['auth']], function(){
+    Route::get('/my-posts','UserPostsController@index')->name('my-posts');
+}
+
+);
