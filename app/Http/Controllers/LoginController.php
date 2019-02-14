@@ -24,7 +24,7 @@ class LoginController extends Controller
         return back()->withErrors([
         'message'=>'wrong login...'
     ]);
-    return redirect()->route('/posts');
+    return redirect()->route('posts.index');
 
         
         }

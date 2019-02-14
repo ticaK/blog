@@ -38,7 +38,19 @@ Route::get('/', function () {
 
  Route::get('/login','LoginController@create')->name('show-login'); //prikaz fajla
  Route::post('/login','LoginController@store')->name('login');//loginovanje korisnika
- 
 
+ //nastavak:
+
+ Route::group(['middleware'=>['guest']],function(){
+    Route::get('/register',['as'=>'show-register','uses'=>'RegisterController@create']);
+    Route::post('/register',['as'=>'register','uses'=>'RegisterController@store']);
+   
+    Route::get('/login','LoginController@create')->name('show-login'); 
+    Route::post('/login','LoginController@store')->name('login');
+   
+
+ });
+ 
+//u ovoj niz pored guest moze vise midl
 //imenovali smo rutu ovo sa as
 //drugi nacin bi bio ono sa name
