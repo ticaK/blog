@@ -5,6 +5,8 @@ use App\Post;
 use App\Comment;
 use App\Http\Requests\CreateCommentRequest;
 
+use App\Mail\CommentRecieved;
+
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -119,11 +121,18 @@ class PostsController extends Controller
 
     public function addComment(CreateCommentRequest $request,$id)
     {
-        Comment::create([
+        $comment = Comment::create([
             'post_id'=>$id,
             'author'=>$request->author,
             'text'=>$request->text
         ]);
+
+        if($comment->post->user){
+            \Mail::to($post->user)->send(new CommentRecieved(
+                $comment->post, $comment
+            ));
+        }
+        
         return redirect()->back();
     }
 }
