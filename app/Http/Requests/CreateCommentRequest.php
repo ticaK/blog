@@ -25,7 +25,7 @@ class CreateCommentRequest extends FormRequest
     {
         return [
             'author'=>'required|min:5',
-            'test'=>'required'
+            'text'=>'required'
         ];
     }
 }
