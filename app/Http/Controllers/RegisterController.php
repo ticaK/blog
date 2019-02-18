@@ -19,8 +19,9 @@ class RegisterController extends Controller
             'email'=>'required|email|unique:users,email',
             'name'=>'required',
             'password'=>'required|min:6',
+             'age'=>'required|integer|min:1'
             
-            //users je tabela, kolona email 
+     
 
         ]);
 

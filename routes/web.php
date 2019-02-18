@@ -29,7 +29,9 @@ Route::get('/', function () {
 
  Route::group(['middleware'=>['guest']],function(){
     Route::get('/register',['as'=>'show-register','uses'=>'RegisterController@create']);
-    Route::post('/register',['as'=>'register','uses'=>'RegisterController@store']);
+
+    Route::post('/register','RegisterController@store')->name('register')->
+    middleware('age');
    
     Route::get('/login','LoginController@create')->name('show-login'); 
     Route::post('/login','LoginController@store')->name('login');
@@ -39,6 +41,7 @@ Route::get('/', function () {
 //ovo je za izlistavanje svih postova od datog korisnika, kada odemo na /my-posts
 Route::group(['middleware'=>['auth']], function(){
     Route::get('/my-posts','UserPostsController@index')->name('my-posts');
-}
+});
 
-);
+
+
