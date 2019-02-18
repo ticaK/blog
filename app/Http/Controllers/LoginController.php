@@ -21,16 +21,12 @@ class LoginController extends Controller
             'password'=>'required'
         ]);
         if(!auth()->attempt($request->only(['email','password']))){
-        return back()->withErrors([
-        'message'=>'wrong login...'
-    ]);
-    return redirect()->route('posts.index');
-
-        
+            return back()->withErrors([
+            'message'=>'wrong login...'
+            ]);
         }
-
-
-
+        return redirect('/posts');
+    // return redirect()->route('posts.index'); moze i ovako
 
     }
 }

@@ -6,17 +6,13 @@ All post
 
 
 @section('content')
-   {{-- <ul>
-       @foreach ($posts as $post)
-       <li>{{$post->title}}</li>
-       @endforeach
-   </ul> --}}
+
    <main role="main" class="container">
        <div class="row">
            <div class="col-md-8 blog-main">
            @foreach ($posts as $post)
            <div class="blog-post">
-               <h2 class="blog-post-title">{{$post->title}}</h2>
+               <h2 class="blog-post-title"><a href = "posts/{{$post->id}}">{{$post->title}}</a></h2>
                <p class="blog-post-meta">{{$post->created_at}}</p>
            <p>{{$post->body}}</p>
            @if($post->user) 

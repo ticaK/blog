@@ -7,7 +7,7 @@
 @section('content')
     <h2 class="blog-post-title">login</h2>
 
-    <form method="POST" action="{{route('login')}}">
+    <form method="POST" action="{{ route('login') }}">
 
         {{ csrf_field() }}
 

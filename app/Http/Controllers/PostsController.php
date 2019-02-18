@@ -22,10 +22,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        // $posts = Post::all();// Post je ime modela
-        $posts = Post::published(); //da prikazuje samo objavljene postove
-
-        return view('posts.index',compact('posts')); //nasa promjenjiva ce se u view zvati post
+        // $posts = Post::all();
+        $posts = Post::orderBy('created_at','desc')->get();
+        return view('posts.index',compact('posts')); 
     }
 
 
