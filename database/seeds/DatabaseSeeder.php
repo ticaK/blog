@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(UsersSeeder::class); //ovdje moraju biti pobrojani svi seederi
+        $this->call(PostsSeeder::class); //redosljed je bitan, mora prvo user, zbog stranog kljuca
+        
     }
 }
+// DatabaseSeeder nije u space, pa ga uvodimo sa \DatabaseSeeder
