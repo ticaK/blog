@@ -21,6 +21,8 @@ All post
            @endif
            </div><!-- /.blog-post -->
            @endforeach
+           {{$posts->links()}}
+           {{-- nad kolekcijom pozivamo links --}}
 
            </div><!-- /.blog-main -->
        </div><!-- /.row -->
