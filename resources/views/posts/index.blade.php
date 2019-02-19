@@ -19,6 +19,12 @@ All post
            <!-- provjeravamo da li korisnik postoji -->
            <p>Created by {{$post->user->name}}</p>
            @endif
+           <form method = "POST" action = "{{route('posts-destroy',['id'=>$post->id])}}">
+            {{-- {{csrf_field()}}
+             --}}
+             @csrf
+            {{-- {{method('DELETE')}} --}}
+            <button type = "submit">Delete</button>
            </div><!-- /.blog-post -->
            @endforeach
            {{$posts->links()}}

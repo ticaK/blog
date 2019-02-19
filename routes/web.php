@@ -17,8 +17,11 @@ Route::get('/', function () {
 
  Route::resource('posts','PostsController');
 
+ Route::delete('posts/{id}/delete','PostsController@destroy')->name('posts-destroy');
+
  Route::post('posts/{id}/comments','PostsController@addComment')
  ->name('posts.comment');
+ 
 
 //  Route::get('/register',['as'=>'show-register','uses'=>'RegisterController@create']);
 //  Route::post('/register',['as'=>'register','uses'=>'RegisterController@store']);
