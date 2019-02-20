@@ -11,28 +11,26 @@ All post
        <div class="row">
            <div class="col-md-8 blog-main">
            @foreach ($posts as $post)
-           <div class="blog-post">
-               <h2 class="blog-post-title"><a href = "posts/{{$post->id}}">{{$post->title}}</a></h2>
-               <p class="blog-post-meta">{{$post->created_at}}</p>
-           <p>{{$post->body}}</p>
-           @if($post->user) 
-           <!-- provjeravamo da li korisnik postoji -->
-           <p>Created by {{$post->user->name}}</p>
-           @endif
-           <form method = "POST" action = "{{route('posts-destroy',['id'=>$post->id])}}">
-            {{-- {{csrf_field()}}
-             --}}
-             @csrf
-            {{-- {{method('DELETE')}} --}}
-            <button type = "submit">Delete</button>
-           </div><!-- /.blog-post -->
-           @endforeach
-           {{$posts->links()}}
-           {{-- nad kolekcijom pozivamo links --}}
+              <div class="blog-post">
+                  <h2 class="blog-post-title"><a href = "posts/{{$post->id}}">{{$post->title}}</a></h2>
+                  <p class="blog-post-meta">{{$post->created_at}}</p>
+                  <p>{{$post->body}}</p>
+                  @if($post->user) 
+                    <p>Created by {{$post->user->name}}</p>
+                  @endif
 
-           </div><!-- /.blog-main -->
-       </div><!-- /.row -->
-   </main><!-- /.container -->
+                  <form method = "POST" action = "{{route('posts.destroy',['id'=>$post->id])}}">
+                      {{method_field('DELETE')}}
+                    {{csrf_field()}}
+                      <button type = "submit">Delete</button>
+                  </form>
+              </div>
+            @endforeach
+           {{$posts->links()}}
+
+          </div>
+       </div>
+   </main>
 
    @endsection
 

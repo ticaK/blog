@@ -17,7 +17,7 @@ Route::get('/', function () {
 
  Route::resource('posts','PostsController');
 
- Route::delete('posts/{id}/delete','PostsController@destroy')->name('posts-destroy');
+//  Route::delete('posts/{id}/delete','PostsController@destroy')->name('posts-destroy'); bez ovoga mozemo jer imamo resource
 
  Route::post('posts/{id}/comments','PostsController@addComment')
  ->name('posts.comment');

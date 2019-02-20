@@ -118,6 +118,7 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
         return redirect()->back();
+
     }
 
     public function addComment(CreateCommentRequest $request,$id)
