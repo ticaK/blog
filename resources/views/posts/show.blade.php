@@ -13,7 +13,18 @@
     
     
     @section('content')
+  <h5>Tags:</h5>
+@if(count($post->tags))
+<ul>
+  @foreach($post->tags as $tag)
+  <li> <a href="/posts/tags/{{$tag->id}}">{{$tag->name}}</li>
+    {{-- da ispod posta imamo listu tagova --}}
+@endforeach
 
+</ul>
+
+
+@endif
     <div>
     <h1>{{$post->title}}</h1>
     <p>{{$post->body}}</p> <hr>

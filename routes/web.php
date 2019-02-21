@@ -19,10 +19,13 @@ Route::get('/', function () {
 
 //  Route::delete('posts/{id}/delete','PostsController@destroy')->name('posts-destroy'); bez ovoga mozemo jer imamo resource
 
- Route::post('posts/{id}/comments','PostsController@addComment')
+
+
+Route::get('posts/tags/{tag}','TagsController@index');
+Route::post('posts/{id}/comments','PostsController@addComment')
  ->name('posts.comment');
  
-
+ 
 //  Route::get('/register',['as'=>'show-register','uses'=>'RegisterController@create']);
 //  Route::post('/register',['as'=>'register','uses'=>'RegisterController@store']);
 //  Route::get('/login','LoginController@create')->name('show-login'); 

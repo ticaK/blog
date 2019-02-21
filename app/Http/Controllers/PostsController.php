@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
+use App\Tag;
+
 use App\Http\Requests\CreateCommentRequest;
 
 use App\Mail\CommentReceived;
@@ -23,7 +25,8 @@ class PostsController extends Controller
     public function index()
     {
         // $posts = Post::all();
-        $posts = Post::orderBy('created_at','desc')->paginate(10);
+        // $posts = Post::orderBy('created_at','desc')->paginate(10);
+        $posts = Post::with('user')->paginate(10);//ovo je potpuno isto, samo bolje rjesenje
         return view('posts.index',compact('posts')); 
     }
 
@@ -36,7 +39,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create'); //iz foldera posts metoda create
+        $tags = Tag::all();
+        return view('posts.create',compact('tags')); //iz foldera posts metoda create
     }
 
     /**
@@ -55,7 +59,8 @@ class PostsController extends Controller
 
             $request->validate([
                 'title'=>'required',
-                'body'=>'required'
+                'body'=>'required',
+                'tags'=>'required|array'
                
             ]);
             $post = Post::create(
@@ -65,7 +70,7 @@ class PostsController extends Controller
                 )
             );
         
-
+       $post->tags()->attach(request('tags'));
         return redirect('/posts');
         // return redirect(route('posts.index')); moze i ovako
 

@@ -30,6 +30,16 @@
 
         </div>
         </div>
+@if(count($tags))
+<div class="form-group">
+<label for = "tags[]">Tags</label>
+@foreach($tags as $tag)
+<input type ="checkbox" id = "tag" name = "tags[]" value ="{{$tag->id}}" /> {{$tag->name}}<br>
+@endforeach
+</div>
+
+@endif
+        
         <div class="form-group row">
         <div class="offset-4 col-8">
             <button type="submit" class="btn btn-primary">Submit</button>
