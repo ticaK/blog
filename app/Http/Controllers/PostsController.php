@@ -26,7 +26,7 @@ class PostsController extends Controller
     {
         // $posts = Post::all();
         // $posts = Post::orderBy('created_at','desc')->paginate(10);
-        $posts = Post::with('user')->paginate(10);//ovo je potpuno isto, samo bolje rjesenje
+        $posts = Post::with('user')->orderBy('created_at','desc')->paginate(10);//ovo je potpuno isto, samo bolje rjesenje
         return view('posts.index',compact('posts')); 
     }
 

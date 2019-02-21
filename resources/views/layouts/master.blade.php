@@ -11,6 +11,10 @@
 </head>
 <body>
   @include('partials.header')
+
+  @foreach($tags as $tag)
+  <a href = "/posts/tags/{{$tag->id}}"> {{$tag->name}} </a>
+  @endforeach
   @yield('content')
   @include('partials.footer')
   
